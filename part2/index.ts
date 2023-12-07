@@ -29,7 +29,8 @@ const convertLineToRealNumbers = (line: string) => {
         return a.index - b.index;
     }).map(num => num.num);
 
-    for (const num of sorted) {
+    for (let i = 0; i < sorted.length; i++) {
+        const num = i == 0 ? sorted[i] : sorted[sorted.length - 1];
         line = line.replace(num, (alphanumericNumbers.indexOf(num) + 1).toString());
     }
 
