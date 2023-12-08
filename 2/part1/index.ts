@@ -38,13 +38,13 @@ const testGameSet = {
 
 const testIfGameCanBePlayed = (game: Game) => {
     const gameSets = game.sets;
-    const redCount = gameSets.reduce((prev, curr) => prev + curr.redCount, 0);
-    const greenCount = gameSets.reduce((prev, curr) => prev + curr.greenCount, 0);
-    const blueCount = gameSets.reduce((prev, curr) => prev + curr.blueCount, 0);
+    const redMaxCount = gameSets.sort((a, b) => b.redCount - a.redCount)[0].redCount;
+    const greenMaxCount = gameSets.sort((a, b) => b.greenCount - a.greenCount)[0].greenCount;
+    const blueMaxCount = gameSets.sort((a, b) => b.blueCount - a.blueCount)[0].blueCount;
 
-    return redCount <= testGameSet.redCount &&
-        greenCount <= testGameSet.greenCount &&
-        blueCount <= testGameSet.blueCount;
+    return redMaxCount <= testGameSet.redCount &&
+        greenMaxCount <= testGameSet.greenCount &&
+        blueMaxCount <= testGameSet.blueCount;
 }
 
 let sumOfGameIndicies = 0;
