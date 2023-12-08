@@ -40,7 +40,7 @@ const getNextNumInRow = (row: string[], offset: number, rowIndex: number): NextN
         const col = row[curCol];
 
         const currentColNum = tryParseInt(col);
-        if (currentColNum) {
+        if (currentColNum !== undefined) {
             num += currentColNum.toString();
             colIndicies.push(curCol);
 
@@ -120,7 +120,7 @@ const hasSpecialCharacterAround = (row: number, col: number) => {
 }
 
 const validateNumberDetails = (numberDetails: NumberDetails): boolean => {
-    const { number, colIndicies, rowIndex } = numberDetails;
+    const { colIndicies, rowIndex } = numberDetails;
 
     for(const colIndex of colIndicies) {
         if (hasSpecialCharacterAround(rowIndex, colIndex)) return true;
